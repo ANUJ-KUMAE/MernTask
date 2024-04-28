@@ -1,0 +1,188 @@
+.Home-data
+{
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.Home-Container 
+{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 5rem;
+}
+
+.Home-Image 
+{
+    display: flex;
+    justify-content: center;
+}
+
+.Home-Image img 
+{
+    height: 20rem;
+    border-radius: 10px;
+}
+
+.Home-List-name span 
+{
+    font-size: 2rem;
+}
+
+.About-Website 
+{
+    margin: 1rem 0 0 2rem;
+}
+
+p 
+{
+    margin-top: 1rem;
+}
+
+
+
+
+/*-----------------User Data--------------*/
+.user-data-lists 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem;
+}
+
+
+
+.search-data input 
+{
+    font-size: 1rem;
+    border: 2px solid black;
+}
+
+table, th, td 
+{
+    border: 2px solid rgb(59, 31, 86);;
+}
+
+table 
+{
+    width: 60%;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+th, td 
+{
+    padding: 0.8rem;
+}
+
+tbody 
+{
+    text-align: center;
+}
+
+/*------------------update--------------*/
+
+.update-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    margin: 3rem;
+}
+
+.update-container h2 
+{
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.update-list 
+{
+    width: 400px;
+    background-color: rgb(70, 125, 125);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.update-container input 
+{
+    margin-bottom: 1rem;
+    padding: 0.2rem 0.5rem;
+}
+
+.update-container label
+{
+    color: black;
+}
+
+.gender-radio,
+.course-checkbox
+{
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.8rem;
+}
+
+.lable-gender,
+.course-lists
+{
+    display: flex;
+    gap: 1rem;
+}
+
+.updatebtn 
+{
+    margin-top: 0.8rem;
+}
+
+.input-fill-text input 
+{
+    font-size: 0.8rem;
+    border: 2px solid black;
+}
+
+.employee-search-and-create
+{
+    display: flex;
+    gap: 10rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.create-new-employee 
+{
+    font-size: 1rem;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+/* .search-data 
+{
+    text-align: center;
+    margin: 2rem 0;
+} */
+
+.profile-image-upload-list img 
+{
+    height: 2rem;
+}
+
+.pagination 
+{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination li 
+{
+    list-style-type: none;
+}
+

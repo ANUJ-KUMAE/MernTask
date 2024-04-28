@@ -1,0 +1,93 @@
+.Nav-container {
+    padding: 1rem 1.5rem;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+  }
+  
+  .Left-Nav img{
+      height: 2rem;
+  }
+  
+  .Right-Nav {
+    display: flex;
+    justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+  }
+  
+  .Right-Nav li {
+    list-style-type: none;
+  }
+  
+  .Right-Nav li a {
+    text-decoration: none;
+    display: block;
+    color: white;
+    cursor: pointer;
+    transition: 0.3 ease-in-out;
+  }
+  
+  .Right-Nav li a:hover,
+  .Right-Nav li a.active {
+    color: aquamarine;
+  }
+  
+  
+  
+  .humberg {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 0.75rem;
+    right: 0.5rem;
+    width: 2.25em;
+    height: 2rem;
+  }
+  
+  /*------------------Responsive----------------*/
+  @media screen and (max-width: 550px) {
+    .Nav-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .humberg {
+      display: block;
+      margin-top: 10px;
+    }
+  
+    .Nav-container ul {
+      display: none; 
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 0.25rem;
+    }
+  
+    .Nav-container ul.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 1.5rem;
+    }
+  
+    .Nav-container ul li {
+      text-align: center;
+      width: 100%;
+    }
+  
+    .Right-Nav li a {
+      margin: 0.2rem 0.5rem;
+      font-size: 1.2rem;
+    }
+  
+    .Right-Nav li a:hover::after,
+    .Right-Nav li a.active::after {
+      display: none;
+    }
+  }
+  

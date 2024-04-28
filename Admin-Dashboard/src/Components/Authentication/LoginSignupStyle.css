@@ -1,0 +1,143 @@
+.account-container 
+{
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 25px 0 20px -20px rgba(0, 0, 0, 0.45), -25px 0 20px -20px rgba(0, 0, 0, 0.45);
+    margin: 2rem 15rem;
+    background-color: aquamarine;
+    border-radius: 20px;
+    border: 2px solid rgb(40, 38, 85);
+}
+
+.Left-part 
+{
+    display: flex;
+    justify-content:center;
+}
+
+.Left-part img
+{
+   width: 50vh;
+}
+
+.top-element 
+{
+    display: flex;
+    justify-content: center;
+}
+
+.top-element img 
+{
+    width: 30%;
+}
+
+.bottom-element
+{
+    max-width: 100%;
+    width: 45%;
+    margin: 0 auto;
+}
+
+.bottom-element .form-header-name h3
+{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.form-input-types 
+{
+    display: flex;
+    flex-direction: column;
+    /* max-width: 100%;
+    width: 40%;
+    margin: 0 auto; */
+}
+
+
+.form-input-types input
+{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.form-element 
+{
+    margin-top: 1rem;
+}
+
+.right-part-signup 
+{
+    margin: 2rem 0;
+}
+
+.term-condition
+{
+    display: flex;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.Account-already
+{
+    margin-top: 1rem;
+}
+
+.Account-already span 
+{
+    font-size: 1.2rem;
+}
+
+/*--------------Responsive-------------*/
+@media screen and (max-width:1030px)
+{
+    .account-container
+    {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .Left-part 
+    {
+        display: none;
+    }
+
+    .bottom-element 
+    {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:825px)
+{
+   .account-container 
+   {
+     margin: 2rem 10rem;
+   }    
+}
+
+@media screen and (max-width:545px) 
+{
+   .account-container 
+   {
+      margin: 2rem 4rem;
+   }    
+}
+
+@media screen and (max-width:285px) 
+{
+   .account-container 
+   {
+     margin: 2rem;
+   } 
+   
+   .bottom-element 
+   {
+      width: 80%;
+   }
+}
