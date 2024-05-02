@@ -20,18 +20,12 @@ var corsOption = {
 };
 
 app.use(cors(corsOption))
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use(fileUpload({ useTempFiles: true }));
+app.use(express.json({limit:'50mb'}));
+app.use(fileUpload({ useTempFiles: true  }));
+app.use(express.urlencoded({extended:true, limit:'50mb'}))
 
 app.use('/Auth/admin', AuthRouter);
 app.use('/Auth/employee', EmployeeRouter);
-
-cloudinary.config({
-    cloud_name: process.env.CLOUDORDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDORDINARY_API_KRY,
-    api_secret: process.env.CLOUDORDINARY_SECRET_KEY,
-  });
 
 
 app.use(errorMiddleware);

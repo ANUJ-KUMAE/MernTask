@@ -1,23 +1,29 @@
 const EmployeModel = require("../Models/EmployeeModel");
-//const cloudinary = require("../Cloudordinary/cloudConfig");
-//const cloudinary = require('cloudinary');
+const cloudinary = require("../Cloudordinary/cloudConfig");
 
 const AddEmployee = async (req, resp, next) => {
   try {
-
-    // const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    //   folder: 'Avatar',
-    //   width:150,
-    //   crop:"scale"
-    // })
-
-    const { name, email, mobile, designation, gender, courses} =
+    const { name, email, mobile, designation, gender, courses, image } =
       req.body;
 
     const checkMail = await EmployeModel.findOne({ email });
     if (checkMail) {
       return resp.status(401).json("Email Already Exits");
     }
+
+    const uploaderImage = cloudinary.uploader.upload(
+      image,
+      {
+        upload_preset: "Image_Upload",
+        allowed_formats: ["png", "jpg", "jpge"],
+      },
+      function (error, result) {
+        if (error) {
+          console.log(error);
+        }
+        console.log(result);
+      }
+    );
 
     const Employeeadd = await EmployeModel.create({
       name,
@@ -26,10 +32,10 @@ const AddEmployee = async (req, resp, next) => {
       designation,
       gender,
       courses,
-      image:{
-        public_id:"Avatar/pzrgbs7nbhtk8luye8ke",
-        url:"https://res.cloudinary.com/dwrd1gmab/image/upload/v1714329786/Avatar/pzrgbs7nbhtk8luye8ke.jpg"
-      }
+      image: {
+        public_id: (await uploaderImage).public_id,
+        URL: (await uploaderImage).secure_url
+      },
     });
     return resp.status(201).json({ success: true, Employeeadd });
   } catch (error) {
@@ -83,8 +89,7 @@ const Getemployeedata = async (req, resp, next) => {
 
 const UpdateEmpData = async (req, resp, next) => {
   try {
-
-    const {courses} = req.body;
+    const { courses } = req.body;
 
     const updateData = await EmployeModel.updateOne(
       { _id: req.params.id },

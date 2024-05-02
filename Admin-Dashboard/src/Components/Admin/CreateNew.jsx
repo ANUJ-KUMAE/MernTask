@@ -12,69 +12,86 @@ const CreateNew = () => {
   const [designation, setDesignation] = useState("");
   const [gender, setGender] = useState("");
   const [courses, setCourses] = useState([]);
-  //const [avatar, setAvatar] = useState([]);
-  //const [imagePreview, setImagePreview] = useState([]);
+  const [image, setImage] = useState("");
+  const [imgPreview, setImagePreview] = useState("");
 
   const navigate = useNavigate();
 
+  const ProfileReview = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      console.log(reader.result);
+      setImagePreview(reader.result);
+    };
+  };
+
+  const handleChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    ProfileReview(file);
+  };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(name, email, mobile, designation, gender, courses);
+
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:5050/Auth/employee/addEmployee",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           name,
+  //           email,
+  //           mobile,
+  //           designation,
+  //           gender,
+  //           courses: courses.map((course) => ({ course })),
+  //         }),
+  //       }
+  //     );
+
+  //     const res_auth = await response.json();
+  //     console.log("res from server", res_auth.extraDetails);
+  //     if (response.ok) {
+  //       toast.success("Employee Added Successfully");
+  //       navigate("/employee");
+  //     } else {
+  //       toast.error(
+  //         res_auth.extraDetails ? res_auth.message : res_auth.extraDetails
+  //       );
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(name, email, mobile, designation, gender, courses);
-
     try {
-      const response = await fetch(
+      const response = await axios.post(
         "http://localhost:5050/Auth/employee/addEmployee",
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            mobile,
-            designation,
-            gender,
-            courses: courses.map((course) => ({ course })),
-          }),
+          name,
+          email,
+          mobile,
+          designation,
+          gender,
+          courses: courses.map((course) => ({ course })),
+          image: imgPreview,
         }
       );
-
-      const res_auth = await response.json();
-      console.log("res from server", res_auth.extraDetails);
-      if (response.ok) {
-        toast.success("Employee Added Successfully");
-        navigate("/employee");
-      } else {
-        toast.error(
-          res_auth.extraDetails ? res_auth.message : res_auth.extraDetails
-        );
-      }
+      toast.success("Employee Added Successfully");
+      navigate("/employee");
     } catch (error) {
       console.log(error);
     }
   };
-
-  {
-    /* const onUpload = (e) => {
-    const file = e.target.files[0];
-    console.log(file);
-    TransformFile(file);
-  };
-
-  const TransformFile = (file) => {
-    const reader = new FileReader();
-
-    if (file) {
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setAvatar(reader.result);
-      };
-    } else {
-      setAvatar("");
-    }
-  };*/
-  }
 
   const handleCheckboxChange = (e) => {
     const value = e.target.value;
@@ -92,7 +109,7 @@ const CreateNew = () => {
           <div className="update-list-name">
             <h2>Add New Employee</h2>
           </div>
-          <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <form onSubmit={handleSubmit}>
             <div className="input-fill-text">
               <label htmlFor="name">Name: </label>
               <input
@@ -203,11 +220,20 @@ const CreateNew = () => {
               </div>
             </div>
 
+            <div className="image-preview">
+              <img
+                src={imgPreview}
+                alt="ImagePreview"
+                style={{ width: "5rem" }}
+              />
+            </div>
+
             <div className="custom-file">
               <input
                 type="file"
-                accept="image/*"
-                name="avatar"
+                id="imputFile"
+                onChange={(e) => handleChange(e)}
+                accept="image/png, image/jpg"
               />
               <label htmlFor="customfile">Choose File</label>
             </div>

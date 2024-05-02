@@ -145,7 +145,7 @@ const EmployeeList = () => {
                 return (
                   <tr key={curEle._id}>
                     <td>
-                      <img src={curEle.image.url} alt="User" style={{width:'50px', height:'50px'}}/>
+                      <img src={curEle.image.URL} alt="User" style={{width:'50px', height:'50px'}}/>
                     </td>
                     <td>{curEle.name}</td>
                     <td>{curEle.email}</td>

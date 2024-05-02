@@ -4,7 +4,7 @@ const EmployeevalidationSchena = require('../Validation/EmployeeValidation');
 const router = express.Router();
 const {AddEmployee, Getemployeedata, UpdateEmpData, AllEmpData, DeleteEmployeeData, searchEmployee, AllEmployeeData}  = require('../Controller/EmployeeController')
 
-router.route('/addEmployee').post(validate(EmployeevalidationSchena),AddEmployee);
+router.route('/addEmployee').post(AddEmployee);
 router.route('/getSingleEmployee/:id').get(Getemployeedata);
 router.route('/updateEmployeeData/:id').put(UpdateEmpData);
 router.route('/AllEmployeeData').get(AllEmpData);

@@ -37,7 +37,7 @@ const EmployeeSchema = new mongoose.Schema(
       public_id: {
         type: String,
       },
-      url: {
+      URL: {
         type: String,
       },
     },
